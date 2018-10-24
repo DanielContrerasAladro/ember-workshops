@@ -6,6 +6,10 @@ export default {
 
 	"filter": "Filtrar",
 
+	"name": "Nombre",
+
+	"clear": "Limpiar",
+
 	"filterRestaurants": "Filtra restaurantes",
 
 	"foundRestaurants": {

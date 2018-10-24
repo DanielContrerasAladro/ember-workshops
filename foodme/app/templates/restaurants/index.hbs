@@ -1,0 +1,61 @@
+<div class="row-fluid">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{t 'filterRestaurants'}}</h3>
+      </div>
+
+      <div class="panel-body">
+				<label>{{t 'rating'}}</label>
+				{{star-rating rating=filterRating on-click=(action "updateFilterRating")}}
+      </div>
+
+      <div class="panel-body">
+        <label>{{t 'cuisine'}}</label>
+        {{#power-select-multiple
+          options=CUISINE_OPTIONS
+          selected=filterCuisins
+          placeholder=(t 'selectCuisins')
+          onchange=(action (mut filterCuisins))
+          as |cuisine|}}
+          {{cuisine.title}}
+        {{/power-select-multiple}}
+      </div>
+
+			<div class="panel-body">
+				<label>{{t 'name'}}</label>
+				{{input value=filterName placeholder=(t 'name') class="form-control"}}
+			</div>
+
+			<div class="panel-footer">
+				<button {{action 'clear'}} class="btn btn-link">{{t 'clear'}}</button>
+			</div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{t 'foundRestaurants' count=filteredRestaurants.length}}</h3>
+      </div>
+
+      <div class="panel-body">
+				{{#each filteredRestaurants as |restaurant| }}
+					<div class="media">
+							<a class="media-left">
+								<img class="media-object" src={{restaurant-img restaurant.id}} width="64" height="64">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">
+										{{link-to restaurant.name 'restaurants.detail' restaurant}}
+										<span class="label label-info">{{capitalize restaurant.cuisine}}</span>
+								</h4>
+								{{star-rating item=restaurant rating=restaurant.rating on-click=(action "updateRating")}}
+								{{restaurant.description}}
+							</div>
+					</div>
+				{{/each}}				
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,10 @@ export default {
 
 	"filterRestaurants": "Filter restaurants",
 
+	"name": "Name",
+
+	"clear": "Clear",	
+
 	"foundRestaurants": {
 		"zero": "No restaurants found!",
 		"one": "{{count}} restaurant found!",

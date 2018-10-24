@@ -1,0 +1,40 @@
+<div class="row-fluid">
+   <div class="page-header">
+      <h1>{{model.name}}</h1>
+   </div>
+
+   <div class="col-md-3">
+      <img src="{{restaurant-img model.id}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4><i class="glyphicon glyphicon-star"></i> Rating: {{model.rating}}</h4>
+      <h4><i class="glyphicon glyphicon-usd"></i> Price: {{model.price}}</h4>
+      <span class="text-muted"><i class="glyphicon glyphicon-tag"></i> {{model.cuisine}}</span>
+   </div>
+
+   <div class="col-md-9">
+      <h3>{{t 'description'}}</h3>
+      {{model.description}}
+
+      <h3>{{t 'location'}}</h3>
+      {{model.location}}
+
+      <h3>{{t 'openingHours'}}</h3>
+      <ul>
+         <li>Opens/Closes: {{model.opens}} - {{model.closes}}</li>
+         <li>
+            Days opened:
+            <ul>
+               {{#each model.days as |day|}}
+                  <li>{{capitalize (t (concat 'weekDays.' (week-day day)))}}</li>
+               {{/each}}
+            </ul>
+         </li>
+      </ul>
+
+      <h3>{{t 'menu'}}</h3>
+      <ul>
+         {{#each model.menuItems as |item|}}
+            <li>{{capitalize item.name}} <span class="text-muted">{{item.price}} €</span></li>
+         {{/each}}
+      </ul>
+   </div>
+</div>
